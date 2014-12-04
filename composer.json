@@ -1,0 +1,21 @@
+{
+	"name": "rkr/postcodes",
+	"description": "A library to help converting from the outdated post-codes to icu-country-codes, vice versa",
+	"type": "library",
+	"require": {
+		"php": ">= 5.3"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~3.7@stable"
+	},
+	"autoload": {
+		"psr-4": {
+			"Kir\\PostCodes\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Kir\\PostCodes\\": ["src/", "tests/"]
+		}
+	}
+}
