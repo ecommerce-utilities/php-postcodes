@@ -1,5 +1,7 @@
 <?php
 namespace Kir\PostCodes;
 
-class CountryNotFoundException extends \RuntimeException {
+use RuntimeException;
+
+class CountryNotFoundException extends RuntimeException {
 }

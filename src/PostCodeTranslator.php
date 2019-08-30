@@ -1,21 +1,17 @@
 <?php
 namespace Kir\PostCodes;
 
+/**
+ * @deprecated Use `\Kir\PostCodes\PostCodeProvider` instead
+ */
 class PostCodeTranslator {
-	/**
-	 * @var string[]|null
-	 */
+	/** @var string[]|null */
 	private static $postCodeList = null;
 
-	/**
-	 * @var string[]|null
-	 */
+	/** @var string[]|null */
 	private static $icuCodeList = null;
 
-	/**
-	 */
-	public function __construct() {
-	}
+	public function __construct() {}
 
 	/**
 	 * @param string $postCode Post-code
@@ -23,12 +19,12 @@ class PostCodeTranslator {
 	 */
 	public function getPostCodeFromIso3166($postCode) {
 		if(self::$icuCodeList === null)  {
-			self::$icuCodeList = require __DIR__ . '/../codes/icucodes-to-postcodes.php';
+			self::$icuCodeList = require dirname(__DIR__) . '/codes/icucodes-to-postcodes.php';
 		}
 		if(array_key_exists($postCode, self::$icuCodeList)) {
 			return self::$icuCodeList[$postCode];
 		}
-		throw new CountryNotFoundException(sprintf("Country %s not found in post-code-list", $postCode));
+		throw new CountryNotFoundException(sprintf('Country %s not found in post-code-list', $postCode));
 	}
 
 	/**
@@ -37,11 +33,11 @@ class PostCodeTranslator {
 	 */
 	public function getIso3166CodeFromPostCode($icuCode) {
 		if(self::$postCodeList === null)  {
-			self::$postCodeList = require __DIR__ . '/../codes/postcodes-to-icucodes.php';
+			self::$postCodeList = require dirname(__DIR__) . '/codes/postcodes-to-icucodes.php';
 		}
 		if(array_key_exists($icuCode, self::$postCodeList)) {
 			return self::$postCodeList[$icuCode];
 		}
-		throw new CountryNotFoundException(sprintf("Country %s not found in post-code-list", $icuCode));
+		throw new CountryNotFoundException(sprintf('Country %s not found in post-code-list', $icuCode));
 	}
 }
